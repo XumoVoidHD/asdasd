@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page 2 - Chessboard Table</title>
+    <style>
+        table, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            width: 300px;
+        }
+        td {
+            height: 30px;
+            width: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Multiplication Table</h2>
+<button onclick="generateTable()">Button 1: Generate Table</button>
+<br><br>
+
+<input type="number" id="searchValue" placeholder="Enter number to search">
+<button onclick="searchNumber()">Button 2: Search</button>
+<p id="searchResult"></p>
+
+<br>
+<button onclick="changeBlackToGreen()">Button 3: Change Black to Green</button>
+
+<br><br>
+<table id="chessboard"></table>
+
+<script>
+function generateTable() {
+    const table = document.getElementById("chessboard")
+    table.innerHTML = ''
+
+    for(let i =1; i < 6; i++){
+        let row = document.createElement('tr')
+        for(let j = 1; j < 6; j++){
+            let col = document.createElement('td')
+            col.innerHTML = i*j;
+            if((i+j) % 2 == 0){
+                col.style.backgroundColor="black"
+                col.style.color="white"
+            }else{
+                col.style.color="black"
+                col.style.backgroundColor="white"
+            }
+            row.appendChild(col)
+        }
+        table.appendChild(row)
+    }
+}
+
+function searchNumber() {
+    const value = parseInt(document.getElementById("searchValue").value);
+    const table = document.getElementById('chessboard');
+    const result = document.getElementById("searchResult");
+    let found = false;
+
+    for (let i = 0; i < table.rows.length; i++) {
+        const cells = table.rows[i].cells;
+        for (let j = 0; j < cells.length; j++) {
+            if (parseInt(cells[j].innerText) === value) {
+                result.innerText = `Found at Row ${i + 1}, Column ${j + 1}`;
+                found = true;
+                return;
+            }
+        }
+    }
+
+    if (!found) {
+        result.innerText = "Number not found in table.";
+    }
+}
+
+function changeBlackToGreen() {
+    const cells = document.getElementById("chessboard").getElementsByTagName("td");
+    for (let i = 0; i < cells.length; i++) {
+        const bg = window.getComputedStyle(cells[i]).backgroundColor;
+        if (bg === "rgb(0, 0, 0)" || bg === "#000000") {
+            cells[i].style.backgroundColor = "green";
+        }
+    }
+}
+</script>
+
+</body>
+</html>

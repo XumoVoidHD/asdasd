@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simplified TikTok Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simplified TikTok Data Entry</h1>
+        <form id="dataEntryForm">
+            <div class="form-group">
+                <label for="videoID">Video ID (5 digit Positive Integer):</label>
+                <input type="number" id="videoID" name="videoID" required pattern="^[0-9]{5}$">
+                <span class="error-message" id="videoIDError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="videoDescription">Video Description (Max 250 Characters):</label>
+                <textarea id="videoDescription" name="videoDescription" maxlength="250"></textarea>
+                <span class="error-message" id="videoDescriptionError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="videoLength">Video Length (HH:MM:SS):</label>
+                <input type="text" id="videoLength" name="videoLength" placeholder="HH:MM:SS" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$">
+                <span class="error-message" id="videoLengthError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="likes">Likes (Positive Integer):</label>
+                <input type="number" id="likes" name="likes" min="0">
+                <span class="error-message" id="likesError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="comments">Comments (Positive Integer):</label>
+                <input type="number" id="comments" name="comments" min="0">
+                <span class="error-message" id="commentsError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="shares">Shares (Positive Integer):</label>
+                <input type="number" id="shares" name="shares" min="0">
+                <span class="error-message" id="sharesError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="views">Views (Positive Integer):</label>
+                <input type="number" id="views" name="views" min="0">
+                <span class="error-message" id="viewsError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="userID">User ID (Valid Email):</label>
+                <input type="email" id="userID" name="userID" required>
+                <span class="error-message" id="userIDError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="userAge">User Age (18-100):</label>
+                <input type="number" id="userAge" name="userAge" min="18" max="100">
+                <span class="error-message" id="userAgeError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="userGender">User Gender:</label>
+                <select id="userGender" name="userGender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <span class="error-message" id="userGenderError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="followerCount">Follower Count (Integer):</label>
+                <input type="number" id="followerCount" name="followerCount">
+                <span class="error-message" id="followerCountError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="followingCount">Following Count (Integer):</label>
+                <input type="number" id="followingCount" name="followingCount">
+                <span class="error-message" id="followingCountError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="totalLikes">Total Likes (Integer):</label>
+                <input type="number" id="totalLikes" name="totalLikes">
+                <span class="error-message" id="totalLikesError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="totalVideos">Total Videos (Integer):</label>
+                <input type="number" id="totalVideos" name="totalVideos">
+                <span class="error-message" id="totalVideosError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="profileDescription">Profile Description (Max 250 Characters):</label>
+                <textarea id="profileDescription" name="profileDescription" maxlength="250"></textarea>
+                <span class="error-message" id="profileDescriptionError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="profilePictureURL">Profile Picture URL (Max 100 Characters):</label>
+                <input type="text" id="profilePictureURL" name="profilePictureURL" maxlength="100">
+                <span class="error-message" id="profilePictureURLError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="ratings">Ratings (1-5):</label>
+                <input type="number" id="ratings" name="ratings" min="1" max="5">
+                <span class="error-message" id="ratingsError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location (Select Country):</label>
+                <select id="location" name="location">
+                    <option value="">Select Country</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="UK">UK</option>
+                    <option value="Australia">Australia</option>
+                    </select>
+                <span class="error-message" id="locationError"></span>
+            </div>
+
+            <button type="button" onclick="submitData()">Submit Data</button>
+        </form>
+
+        <div id="dashboard" class="dashboard">
+            <h2>User Input Dashboard</h2>
+            <div id="userData"></div>
+            <h3>Analytics</h3>
+            <p>Average Likes: <span id="avgLikes">0</span></p>
+            <p>Average Videos: <span id="avgVideos">0</span></p>
+            <p>Average Ratings: <span id="avgRatings">0</span></p>
+            <p>Users with Average Rating >= 4: <span id="highRatingUsers">0</span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

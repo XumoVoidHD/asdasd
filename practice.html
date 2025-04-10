@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .valid {
+            color: green
+        }
+
+        .invalid {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="mybtn">Click me</button>
+
+    <input type="password" id="userInput" placeholder="Type something" />
+
+    <input type="text" id="userInput2" placeholder="Type something" onmouseout="copy_text()" />
+
+    <br><br>
+    <form id="userForm" onsubmit="handleSubmit(event)">
+        <fieldset>
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <input type="text" id="name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email:
+                    </td>
+                    <td>
+                        <input type="email" id="email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Password:
+                    </td>
+                    <td>
+                        <input type="password" id="password" />
+                    </td>
+                </tr>
+            </table>
+            <br>
+            Gender:
+            <input type="radio" name="gender" value="Male" onclick="toggleGender()"> Male
+            <input type="radio" name="gender" value="Female" onclick="toggleGender()"> Female
+            <input type="radio" name="gender" value="Other" id="genderOther" onclick="toggleGender()">Other
+            <input type="text" id="otherGenderBox" placeholder="Enter your gender" style="display: none;" /><br><br>
+
+            Skills:
+            <input type="checkbox" class="skill" name="skill" value="HTML"> HTML
+            <input type="checkbox" class="skill" name="skill" value="CSS"> CSS
+            <input type="checkbox" class="skill" name="skill" value="JavaScript"> JavaScript<br><br>
+
+            Country:
+            <select id="country">
+                <option value="">--Select Country--</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+            </select><br><br>
+
+            Bio: <br>
+            <textarea id="bio" rows="4" cols="30"></textarea><br><br>
+            <input type="submit" />
+            <legend>User Submission Form</legend>
+        </fieldset>
+
+        <pre id="output"></pre>
+
+        <button onclick="addParagraphs()">Create repetition</button>
+        <button onclick="removeParagraphs()">Remove repetition</button>
+
+        <div id="container"></div>
+
+        <fieldset>
+            <legend>Preferences</legend>
+
+            <label><input type="checkbox" name="subscribe"> Subscribe to newsletter</label><br>
+            <label><input type="checkbox" name="updates"> Get updates</label><br>
+        </fieldset>
+    </form>
+
+    <button onclick="changeColor()">Change Color</button>
+    <p id="text" class="valid">Hello World!</p>
+
+    <select id="fruits" multiple size="4">
+        <option value="Apple">Apple</option>
+        <option value="Banana">Banana</option>
+        <option value="Mango">Mango</option>
+        <option value="Pineapple">Pineapple</option>
+    </select>
+    <br>
+    <button onclick="showFruits()">Show Selection</button>
+    <p id="output"></p>
+
+    Choose a fruit:
+    <select id="fruits">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="mango">Mango</option>
+    </select>
+
+
+</body>
+<script src="practice.js"></script>
+
+</html>

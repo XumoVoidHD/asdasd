@@ -1,0 +1,42 @@
+
+<canvas id="myCanvas" width="300" height="300" style="border:1px solid black;"></canvas>
+<script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+</script>
+
+ctx.fillStyle = "skyblue";
+ctx.fillRect(20, 20, 100, 50); // (x, y, width, height)
+
+ctx.strokeStyle = "black";
+ctx.strokeRect(20, 90, 100, 50);
+
+Draw a Circle (Filled & Stroked)
+
+ctx.beginPath();
+ctx.arc(150, 70, 40, 0, 2 * Math.PI); // (x, y, radius, startAngle, endAngle)
+ctx.fillStyle = "orange";
+ctx.fill();
+ctx.stroke(); // outline
+
+Draw a Line
+ctx.beginPath();
+ctx.moveTo(10, 200);
+ctx.lineTo(200, 200);
+ctx.strokeStyle = "green";
+ctx.lineWidth = 3;
+ctx.stroke();
+
+Draw a Triangle
+ctx.beginPath();
+ctx.moveTo(150, 150);
+ctx.lineTo(200, 250);
+ctx.lineTo(100, 250);
+ctx.closePath(); // connects back to first point
+ctx.fillStyle = "purple";
+ctx.fill();
+ctx.stroke(); // optional border
+
+
+<canvas id="bottomLayer" width="300" height="300" style="position: absolute; z-index: 1;"></canvas>
+<canvas id="topLayer" width="300" height="300" style="position: absolute; z-index: 2;"></canvas>

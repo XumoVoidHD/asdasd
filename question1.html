@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Auto Table Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .table-container {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        #entryTable.red {
+            background-color: #f8d7da;
+        }
+
+        .total {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0d1b2a;
+            padding: 15px 30px;
+            color: white;
+        }
+
+        /* Logo section */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Navigation links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        /* Each link */
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #fca311;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">MySite</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <h2>Add Entry</h2>
+    <form id="entryForm">
+        <label>
+            Name:
+            <input type="text" id="name" required>
+        </label>
+        <label>
+            Amount:
+            <input type="number" id="amount" required>
+        </label>
+        <button type="submit">Add</button>
+    </form>
+
+    <div class="table-container">
+        <table id="entryTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Entries will be added here -->
+            </tbody>
+        </table>
+        <div class="total" id="totalDisplay">Total: 0</div>
+    </div>
+
+    <script>
+        const form = document.getElementById("entryForm");
+        const nameInput = document.getElementById("name");
+        const amountInput = document.getElementById("amount");
+        const tableBody = document.querySelector("#entryTable tbody");
+        const totalDisplay = document.getElementById("totalDisplay");
+        const table = document.getElementById("entryTable");
+
+        let total = 0;
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = nameInput.value.trim();
+            const amount = parseFloat(amountInput.value);
+
+            if (name && !isNaN(amount)) {
+                const row = document.createElement("tr");
+
+                const nameCell = document.createElement("td");
+                nameCell.textContent = name;
+
+                const amountCell = document.createElement("td");
+                amountCell.textContent = amount.toFixed(2);
+
+                row.appendChild(nameCell);
+                row.appendChild(amountCell);
+                tableBody.appendChild(row);
+
+                total += amount;
+                totalDisplay.textContent = `Total: ${total.toFixed(2)}`;
+
+                if (total > 5000) {
+                    table.classList.add("red");
+                }
+
+                form.reset();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
