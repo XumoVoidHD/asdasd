@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'; // ✅ Import PropTypes
 
 function Greeting({ name, age }) {
-    return <h1>Hello, {name}! You are {age} years old.</h1>;
+    return <h1>Hello, {Guest}! You are {age} years old.</h1>;
 }
 
 // ✅ Apply PropTypes validation
